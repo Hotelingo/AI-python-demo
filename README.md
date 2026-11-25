@@ -13,3 +13,7 @@ Choose `invoices_clean.csv`, `payments_clean.csv`, `invoices_quarantine.csv`, an
 ## Rules and limitations
 
 Payments dated up to the selected cutoff are summed per invoice after checking vendor and currency. Age is calendar days since invoice date. More than 30 means 31 days or more; without due dates it is not an overdue measure. Credit notes and negative balances are shown separately, without automatic allocation. Quarantined rows and unlinked or mismatched payments require review. No ledger reconciliation, data persistence, user authentication, or completeness checks are provided. Changing dates does not guarantee a complete historical population; obtain complete data and confirm cutoff and credit treatment. Uploads are sent to Vercel for in-memory processing and are not stored by the app. Use only authorized non-sensitive demo data on a public deployment.
+
+## Charts
+
+Optionally upload `vendors_clean.csv` for supplier names. Otherwise charts show vendor IDs. For each selected currency, the app shows aging buckets (0–30, 31–60, 61–90, 91–120, 121+ days) and the top 10 suppliers by outstanding positive invoice balance, with invoice counts. Credits, overpayments, unmatched or mismatched records and quarantined rows are excluded from the chart totals and must be reviewed separately. The source is accounts payable, so the ranking is suppliers, not customers. Aging is based on invoice date, not due date.
